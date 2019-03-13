@@ -1,0 +1,72 @@
+﻿@model ProductModel.PageViewModel
+<main class="page product-details">
+
+    <div class="product-item @Model.Theme">
+        <div class="container lg">
+            <div class="row main-info">
+                <div class="col-md-5 col-lg-6">
+                    <span class="img" style="background-image: url('@Html.Raw(Model.ProductImageHttpPath)')">
+                        <span class="product-badge">@Html.Raw(Model.CategoryCaption)</span>
+                    </span>
+                </div>
+                <div class="col-md-7 col-lg-6">
+                    <article class="info" data-id="@Model.ProductID">
+                        <div class="head">
+                            <h1 class="title sm">@Html.Raw(Model.ProductCaption)</h1>
+                        </div>
+
+                        <div class="body">
+                            <div class="text">
+                                @Html.Raw(Model.ProductDescription)
+                            </div>
+
+                        </div>
+                        @if (Model.IsUserLoggedIn)
+                        {
+                            <div class="foo">
+                                <div class="">
+                                    <span class="product-price lg">
+                                        <span class="current">@Html.Raw(Model.ProductPrice) </span>
+                                        @if (Model.HasProductPriceOld)
+                                        {
+                                            <span class="old">$ @Model.ProductPriceOld</span>
+                                        }
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="product-count">
+                                        <input type="text" maxlength="3" value="1">
+                                        <span class="controls">
+                                            <button class="plus">+</button>
+                                            <button class="minus">-</button>
+                                        </span>
+                                    </div>
+                                    <button class="btn primary-btn basket-btn js-add-to-basket-button">Add To Basket</button>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="foo">
+                                <div>
+                                    <a href="@Model.SignInUrl" class="btn primary-btn basket-btn">Please Sign In To Purchase</a>
+                                </div>
+                            </div>
+                        }
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section FooterSection
+{
+<script src="~/Content/js/Products/Product.js"></script>
+<script>
+    ProductModel.AddProductInBasketUrl = '@Html.Raw(Model.AddProductInBasketUrl)';
+    ProductModel.TextBasketAddSuccess = '@Html.Raw(Model.TextBasketAddSuccess)';
+</script>
+}

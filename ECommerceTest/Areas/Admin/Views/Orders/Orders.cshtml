@@ -1,0 +1,13 @@
+﻿@model OrdersGridModel.PageViewModel
+@section HeaderSection{
+    @Html.DevExpress().GetStyleSheets(new StyleSheet { ExtensionSuite = ExtensionSuite.GridView })
+    @Html.DevExpress().GetScripts(new Script { ExtensionSuite = ExtensionSuite.GridView })
+}
+@if (Model.ShowGrid)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            @Html.Partial(ViewNames.Admin.Shared.DevexpressGrid, Model.Grid)
+        </div>
+    </div>
+}

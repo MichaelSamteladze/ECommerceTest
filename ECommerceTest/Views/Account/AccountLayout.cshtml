@@ -1,0 +1,32 @@
+﻿@{ var Model = LocalUtilities.GetLayoutViewModel<AccountLayoutModel>(ViewData: ViewData, Key: Core.Utilities.Constants.ViewData.TabsViewModel); }
+@{ 
+    Layout = ViewNames.Website.Shared.Layout;
+}
+@section HeaderSection{
+    @RenderSection("HeaderSection", false)
+}
+
+<main class="page account">
+    @if (Model.HasTabs)
+    {
+        <div class="nav">
+            <div class="container">
+                <ul class="row">
+                    @foreach (var Tab in Model.Tabs)
+                    {
+                        <li class="col">
+                            <a href="@Tab.NavigateUrl" @(Tab.IsSelected ? Html.Raw("class=\"active\"") : null)> @Tab.Caption</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+
+    @RenderBody()
+</main>
+
+@section FooterSection{
+    @RenderSection("FooterSection", false)
+}

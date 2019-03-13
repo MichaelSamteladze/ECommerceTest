@@ -1,0 +1,68 @@
+﻿@model AccountModel.OrderHistoryModel.PageViewModel
+@{
+    Layout = ViewNames.Website.Account.Layout;
+}
+
+<div class="container sm">    
+    <div class="order-history">
+        <div class="head">
+            <div class="row">
+                <div class="col">
+                    Order #
+                </div>
+                <div class="col">
+                    Order Placed
+                </div>
+                <div class="col">
+                    Total
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            @if (Model.HasOrders)
+            {
+                foreach (var Item in Model.Orders)
+                {
+                    <div class="item">
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="link js-toggle-details">@Item.OrderID</a>
+                            </div>
+                            <div class="col">
+                                <span class="date">@Item.OrderDate</span>
+                            </div>
+                            <div class="col">
+                                <span class="price">@Item.OrderTotalPrice</span>
+                                <a href="@Item.InvoiceUrl" target="_blank" class="invoice-link"><i class="icon"><img src="~/Content/images/icons/invoice.svg" alt="invoice icon"></i></a>
+                            </div>
+                        </div>
+                        <div class="details collapse">
+                            @foreach (var SubItem in Item.OrderDetailItems)
+                            {
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="@SubItem.ProductNavigateUrl">
+                                            @Html.Raw(SubItem.ProductCaption)
+                                        </a>
+
+                                    </div>
+                                    <div class="col">
+                                        @SubItem.ProductCount  x  @SubItem.PricePaid
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@section FooterSection{
+    <script>
+	$('.js-toggle-details').click(function(){
+		$(this).closest('.item').children('.details').slideToggle(200);
+	});
+</script>
+}

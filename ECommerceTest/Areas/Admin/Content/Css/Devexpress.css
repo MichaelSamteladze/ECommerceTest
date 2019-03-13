@@ -1,0 +1,43 @@
+﻿.dxgvControl_MaterialCompact .dxgvTable_MaterialCompact .dxgvFocusedRow_MaterialCompact,
+.dxgvControl_MaterialCompact .dxgvTable_MaterialCompact .dxgvFocusedRow_MaterialCompact.dxgvDataRowHover_MaterialCompact{
+    background-color:#e6edff !important;
+    color:#484848 !important;
+}
+.dxgvControl_MaterialCompact .dxgvTable_MaterialCompact .dxgvFocusedRow_MaterialCompact a,
+.dxgvControl_MaterialCompact .dxgvTable_MaterialCompact .dxgvFocusedGroupRow_MaterialCompact a{
+    color:#5983FE !important;
+}
+
+/*================= Devexpress Grid Focused Row Checkbox Style Fix =================*/
+.dxgvFocusedRow_MaterialCompact .dxWeb_edtCheckBoxUnchecked_MaterialCompact {
+    background-position:-440px -76px !important;
+}
+.dxgvFocusedRow_MaterialCompact .dxWeb_edtCheckBoxChecked_MaterialCompact{
+    background-position:-340px -76px !important;
+}
+/*================/ Devexpress Grid Focused Row Checkbox Style Fix =================*/
+
+/* Devexpress controls fix for "form-control" class */
+table.form-control{
+    display:table;
+    padding-top:5px;
+    padding-bottom:4px;
+}
+
+table.form-control input{
+    height: 24px;
+}
+
+.form-control td.dxic{
+    padding:0 8px 0 7px !important;
+}
+
+.form-control .dxeButtonEditButton_MaterialCompact,
+.form-control .dxeCalendarButton_MaterialCompact,
+.form-control .dxeSpinIncButton_MaterialCompact,
+.form-control .dxeSpinDecButton_MaterialCompact,
+.form-control .dxeSpinLargeIncButton_MaterialCompact,
+.form-control .dxeSpinLargeDecButton_MaterialCompact,
+.form-control .dxeColorEditButton_MaterialCompact{
+    background-color:transparent;
+}

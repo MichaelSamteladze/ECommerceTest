@@ -1,0 +1,184 @@
+﻿@{ var Model = LocalUtilities.GetLayoutViewModel<WebsiteLayoutModel>(ViewData: ViewData, Key: Core.Utilities.Constants.ViewData.LayoutViewModel); }
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/Plugins/FontAwesome/5.5.0/css/all.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/FontAwesome/font-awesome-animation.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/Bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <link href="~/Content/Plugins/Utils/utils.css" rel="stylesheet" />
+    <title>@Html.Raw(Model.PageTitleHead)</title>
+    @RenderSection("HeaderSection", false)
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <div>
+                @*<div class="social">
+                        <a href="@Model.FacebookUrl" target="_blank"><i class="icon"><img src="~/Content/images/icons/social/fb.svg" alt="Facebook icon" /></i></a>
+                        <a href="@Model.InstagramUrl" target="_blank"><i class="icon"><img src="~/Content/images/icons/social/inst.svg" alt="Instagram icon" /></i></a>
+                        <a href="@Model.YoutubeChannelUrl" target="_blank"><i class="icon"><img src="~/Content/images/icons/social/yt.svg" alt="Youtube icon" /></i></a>
+                    </div>*@
+                <div class="top-bar-nav">
+                    <ul>
+                        <li>
+                            @if (Model.HasUserItem)
+                            {
+                                <a class="header-btn basket" href="@(Model.HasUserItem ? Model.BasketUrl : Model.SignInUrl)">
+                                    <img src="~/Content/Images/icons/cart.svg" alt="cart" />
+
+                                    <span class="count js-product-count-badge @(Model.HasProductsInBasket? null : "hidden")">@Model.ProductsCountInBasket</span>
+
+                                </a>
+                            }
+                        </li>
+                        <li>
+                            @if (Model.HasUserItem)
+                            {
+                                <button class="header-btn">
+                                    <img src="~/Content/Images/icons/user.svg" alt="" />
+                                </button>
+                                <div class="header-nav-dropdown">
+                                    <ul>
+                                        @foreach (var Item in Model.AccountMenu)
+                                        {
+                                            <li>
+                                                <a href="@Item.NavigateUrl">@Item.Caption</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="header-btn" href="@Model.SignInUrl" title="Sign In">
+                                    <i class="fa fa-lock"></i>
+                                </a>
+                            }
+                        </li>
+                    </ul>
+                </div>
+
+                <nav>
+                    <ul>
+                        @if (Model.HasMenu)
+                        {
+                            foreach (var Item in Model.Menu)
+                            {
+                                <li>
+                                    <a @(Item.IsSelected ? null : Html.Raw($"href=\"{Item.NavigateUrl}\"")) @(Item.IsSelected ? Html.Raw("class=\"active\"") : null)>
+                                        @Item.Caption
+                                    </a>
+                                    @if (Item.HasChildren)
+                                    {
+                                        <div class="sub">
+                                            <ul>
+                                                @foreach (var SubItem in Item.Children)
+                                                {
+                                                    <li>
+                                                        <a @(SubItem.IsSelected ? null : Html.Raw($"href=\"{SubItem.NavigateUrl}\"")) @(SubItem.IsSelected ? Html.Raw("class=\"active\"") : null)>
+                                                            @Html.Raw(SubItem.Caption)
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+                <div class="contact-info">
+                    <span>
+                        <i class="icon"><img src="~/Content/images/icons/mail.svg" alt="Email icon" /></i>
+                        <a href="mailto:@Model.CompanyEmail">@Model.CompanyEmail</a>
+                    </span>
+                    <span>
+                        <i class="icon"><img src="~/Content/images/icons/phone.svg" alt="Phone icon" /></i>
+                        <a href="tel:@Model.CompanyPhoneNumber">@Model.CompanyPhoneNumber</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-wrap">
+            <a href="@Model.WebsiteAddress" class="logo"><img src="~/Content/images/logo.png" alt="" /></a>
+
+            <button class="hamburger">
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    @RenderBody()
+
+    <div class="fixed-buttons">
+        @if (Model.HasUserItem)
+        {
+            <a href="@Model.BasketUrl">Basket <span class="js-product-count-badge-container @(Model.HasProductsInBasket?null: "hidden")">(<span class="js-product-count-badge">@Model.ProductsCountInBasket</span>)</span></a>
+        }
+        else
+        {
+            <a href="@Model.SignUpUrl">Sign Up</a>
+        }
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <p class="col-sm-6">All Rights Reserved</p>
+                <div class="col-sm-6 sixtythreebits">
+                    <span>Developed By: Michael Samteladze </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @if (Model.IsSuccessErrorPartialInitiated)
+    {
+        <link href="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.css" rel="stylesheet" />
+        <script src="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.js"></script>
+        @Html.Partial(ViewNames.Shared.SuccessErrorPartialView, Model.SuccessErrorModel)
+    }
+
+    <div class="modal fade" data-modal="alert">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="icon"><img src="~/Content/images/icons/close2.svg" alt="Close"></i>
+                </button>
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="text text-c">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn primary-btn modal-dissmis" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/plugins/jsc/client.min.js"></script>
+    <script src="~/Content/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/Plugins/Bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="~/Content/Plugins/Utils/utils.js"></script>
+    <script src="~/Content/js/global.js"></script>
+    <script>
+        Globals.TextError = '@Model.TextError';
+        Globals.TextSuccess = '@Model.TextSuccess';
+    </script>
+    @RenderSection("FooterSection", false)
+</body>
+</html>

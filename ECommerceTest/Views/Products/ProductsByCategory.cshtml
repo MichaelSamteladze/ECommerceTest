@@ -1,0 +1,45 @@
+﻿@model ProductsByCategoryModel.PageViewModel
+<main class="page categories">
+    <div class="container">
+        <h1 class="title lg page-title">@Html.Raw(Model.PageTitle)</h1>        
+    </div>
+    <div class="container xl">
+        <div class="row product-list">
+            @if (Model.HasProducts)
+            {
+                foreach (var Item in Model.Products)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="product-list-item @Item.Theme" data-id="@Item.ProductID">
+                            <a class="img" href="@Item.NavigateUrl" style="background-image: url('@Html.Raw(Item.ProductImageHttpPath)'"></a>
+                            <div>
+                                <h3 class="product-name"><a href="@Item.NavigateUrl">@Item.ProductCaption</a></h3>
+                            </div>
+                            @if (Model.ShowAddToCartButton)
+                            {
+                                <span class="product-price">
+                                    <span class="current">@Item.ProductPrice</span>
+                                </span>
+                                <button class="btn primary-btn js-add-to-basket-button">Add to Basket <i class="fas fa-spinner fa-spin hidden js-add-to-basket-loader"></i></button>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        @if (Model.HasPager)
+        {
+            @Html.Partial(ViewNames.Website.Shared.PagerPartial, Model.PagerItems)
+        }
+    </div>
+</main>
+
+@section FooterSection{
+    <script src="~/Content/js/Products/Products.js"></script>
+    <script>
+    $(function () {
+        ProductsModel.AddProductInBasketUrl = '@Model.AddProductInBasketUrl';
+        ProductsModel.TextBasketAddSuccess = '@Model.TextBasketAddSuccess';
+    })
+    </script>
+}

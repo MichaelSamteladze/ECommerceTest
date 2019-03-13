@@ -1,0 +1,38 @@
+﻿@model AuthModel.SignInModel.PageViewModel
+<main class="page auth">
+    <div class="container xs">
+        <h1 class="title legend">Sign In</h1>
+        <div class="form">
+            <form method="post" novalidate>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="email" name="@nameof(Model.Email)" value="@Model.Email">
+                    <span class=" help-block error-text"></span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" value="@Model.Password" name="@nameof(Model.Password)">
+                    <span class=" help-block error-text"></span>
+                </div>
+                @if (Model.HasError)
+                {
+                    <span class="error-text global-error">@Model.TextInvalidUsernameOrPassword</span>
+                }
+
+                <button class="btn primary-btn submit-btn" type="submit">Sign In</button>
+
+            </form>
+
+            <div class="foo">
+                <p>
+                    <a href="@Model.ForgotPasswordUrl" class="link">Forgot Password?</a>
+                </p>
+
+                <p>
+                    <span>Not user yet?</span><br />
+                    <a href="@Model.SignUpUrl" class="link">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>

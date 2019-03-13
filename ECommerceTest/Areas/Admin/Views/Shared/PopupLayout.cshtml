@@ -1,0 +1,51 @@
+﻿@{ var Model = LocalUtilities.GetLayoutViewModel<AdminLayoutModel>(ViewData: ViewData, Key: Core.Utilities.Constants.ViewData.LayoutViewModel); }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.PageTitle</title>
+    <link rel="stylesheet" href="~/Content/Plugins/FontAwesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/Plugins/63bits-fonts/fonts.css" />
+    <link rel="stylesheet" href="~/Content/Plugins/Bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Plugins/Preloader/preloader.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/Angel/Css/theme-a.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/Angel/Css/app.css" />
+
+    <link href="~/Areas/Admin/Content/Css/Devexpress.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/style.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/Utils/utils.css" rel="stylesheet" />
+
+    <script src="~/Content/Plugins/jQuery/jquery-3.2.1.min.js"></script>
+    @RenderSection("HeaderSection", false)
+</head>
+<body>
+
+<div class="modal-header">
+    <button type="button" class="close iframe" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 class="modal-title" id="modal-title">@Model.PageTitle<a class="anchorjs-link" href="#modal-title"><span class="anchorjs-icon"></span></a></h4>
+</div>
+<div class="modal-scroll">
+    <div class="modal-body">
+        @RenderBody()
+    </div>
+</div>                
+<div class="modal-footer">
+    @RenderSection("ModalFooterSection", false)
+</div>
+@if (Model.IsSuccessErrorPartialInitiated)
+{
+    <link href="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.css" rel="stylesheet" />
+    <script src="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.js"></script>
+    @Html.Partial(ViewNames.Shared.SuccessErrorPartialView, Model.SuccessErrorModel)
+}
+<script src="~/Content/Plugins/Bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="~/Content/Plugins/Utils/utils.js"></script>
+<script src="~/Content/Plugins/Preloader/preloader.js"></script>
+<script src="~/Areas/Admin/Content/Scripts/Global.js"></script>
+<script>
+
+    Globals.TextError = '@Model.TextError';
+    Globals.TextSuccess = '@Model.TextSuccess';
+</script>
+@RenderSection("FooterSection", false)
+</body>
+</html>

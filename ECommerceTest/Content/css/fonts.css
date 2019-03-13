@@ -1,0 +1,53 @@
+/* BPG DejaVu Sans */
+@font-face {
+	font-family: 'BPG DejaVu Sans';
+	src: url('../fonts/BPG_DejaVuSans/light.eot');
+	src: url('../fonts/BPG_DejaVuSans/light.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/BPG_DejaVuSans/light.woff') format('woff'),
+			 url('../fonts/BPG_DejaVuSans/light.ttf') format('truetype'),
+			 url('../fonts/BPG_DejaVuSans/light.svg#BPG DejaVu Sans') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'BPG DejaVu Sans';
+	src: url('../fonts/BPG_DejaVuSans/regular.eot');
+	src: url('../fonts/BPG_DejaVuSans/regular.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/BPG_DejaVuSans/regular.woff') format('woff'),
+			 url('../fonts/BPG_DejaVuSans/regular.ttf') format('truetype'),
+			 url('../fonts/BPG_DejaVuSans/regular.svg#BPG DejaVu Sans') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'BPG DejaVu Sans';
+	src: url('../fonts/BPG_DejaVuSans/bold.eot');
+	src: url('../fonts/BPG_DejaVuSans/bold.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/BPG_DejaVuSans/bold.woff') format('woff'),
+			 url('../fonts/BPG_DejaVuSans/bold.ttf') format('truetype'),
+			 url('../fonts/BPG_DejaVuSans/bold.svg#BPG DejaVu Sans') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Mrgvlovani Caps */
+@font-face {
+	font-family: 'Mrgvlovani Caps';
+	src: url('../fonts/MrgvlovaniCaps/regular.eot');
+	src: url('../fonts/MrgvlovaniCaps/regular.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/MrgvlovaniCaps/regular.woff') format('woff'),
+			 url('../fonts/MrgvlovaniCaps/regular.ttf') format('truetype'),
+			 url('../fonts/MrgvlovaniCaps/regular.svg#Mrgvlovani Caps') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Mrgvlovani Caps';
+	src: url('../fonts/MrgvlovaniCaps/bold.eot');
+	src: url('../fonts/MrgvlovaniCaps/bold.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/MrgvlovaniCaps/bold.woff') format('woff'),
+			 url('../fonts/MrgvlovaniCaps/bold.ttf') format('truetype'),
+			 url('../fonts/MrgvlovaniCaps/bold.svg#Mrgvlovani Caps') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}

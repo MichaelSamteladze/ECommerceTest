@@ -1,0 +1,642 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B05E414-4D25-436A-859B-33DDA30B2298}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ECommerceTest</RootNamespace>
+    <AssemblyName>ECommerceTest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.2.UI, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SixtyThreeBits.Libraries, Version=3.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\63BITS-Libraries.3.1.24\lib\SixtyThreeBits.Libraries.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TaxJar, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ErrorLog.txt" />
+    <Content Include="Areas\Admin\Content\Css\Devexpress.css" />
+    <Content Include="Areas\Admin\Content\Css\SortableTree.css" />
+    <Content Include="Areas\Admin\Content\Css\style.css" />
+    <Content Include="Areas\Admin\Content\Css\Tabs.css" />
+    <Content Include="Areas\Admin\Content\Images\helper.png" />
+    <Content Include="Areas\Admin\Content\Images\logo-small.png" />
+    <Content Include="Areas\Admin\Content\Images\no-avatar.png" />
+    <Content Include="Areas\Admin\Content\Scripts\Carousel\CarouselGrid.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Carousel\CarouselItem.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Categories\CategoriesTree.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Categories\Category.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Dictionaries\Dictionaries.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Faq\FAQ.js" />
+    <Content Include="Areas\Admin\Content\Scripts\FileManager\FileManager.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Global.js" />
+    <Content Include="Areas\Admin\Content\Scripts\News\NewsGrid.js" />
+    <Content Include="Areas\Admin\Content\Scripts\News\NewsItem\Properties.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Pages\Page\Properties.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Pages\PagesTree.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Products\ProductsGrid.js" />
+    <Content Include="Areas\Admin\Content\Scripts\Products\Product.js" />
+    <Content Include="Areas\Admin\Content\Scripts\UserManagement\Permissions.js" />
+    <Content Include="Areas\Admin\Content\Scripts\UserManagement\Users.js" />
+    <Content Include="Content\css\fonts.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold.svg" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold_up.svg" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light.svg" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light_up.svg" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular.svg" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular_up.svg" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.svg" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.svg" />
+    <Content Include="Content\Images\63bits.svg" />
+    <Content Include="Content\Images\CreditCardLogo.png" />
+    <Content Include="Content\Images\icons\cart.svg" />
+    <Content Include="Content\Images\icons\close.svg" />
+    <Content Include="Content\Images\icons\close2.svg" />
+    <Content Include="Content\Images\icons\fail.svg" />
+    <Content Include="Content\Images\icons\mail.svg" />
+    <Content Include="Content\Images\icons\mail_gr.svg" />
+    <Content Include="Content\Images\icons\phone.svg" />
+    <Content Include="Content\Images\icons\phone_gr.svg" />
+    <Content Include="Content\Images\icons\pin_gr.svg" />
+    <Content Include="Content\Images\icons\select_triangle.svg" />
+    <Content Include="Content\Images\icons\social\fb.svg" />
+    <Content Include="Content\Images\icons\social\inst.svg" />
+    <Content Include="Content\Images\icons\social\yt.svg" />
+    <Content Include="Content\Images\icons\invoice.svg" />
+    <Content Include="Content\Images\icons\success.svg" />
+    <Content Include="Content\Images\icons\user.svg" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\noPhoto.png" />
+    <Content Include="Content\Images\paypalLogo.png" />
+    <Content Include="Content\Images\themes\g-1.png" />
+    <Content Include="Content\Images\themes\g-2.png" />
+    <Content Include="Content\Images\themes\g-3.png" />
+    <Content Include="Content\Images\themes\g-4.png" />
+    <Content Include="Content\Images\themes\g-5.png" />
+    <Content Include="Content\Images\themes\g-6.png" />
+    <Content Include="Content\Images\themes\g-7.png" />
+    <Content Include="Content\Images\themes\g-8.png" />
+    <Content Include="Content\js\Basket\Basket.js" />
+    <Content Include="Content\js\Home\Contact.js" />
+    <Content Include="Content\js\global.js" />
+    <Content Include="Content\js\Home\Index.js" />
+    <Content Include="Content\js\Home\FAQ.js" />
+    <Content Include="Content\js\Checkout\Checkout.js" />
+    <Content Include="Content\js\Products\Product.js" />
+    <Content Include="Content\js\Products\Products.js" />
+    <Content Include="Content\js\Auth\SignUp.js" />
+    <Content Include="Content\Plugins\63bits-bsforms\forms.css" />
+    <Content Include="Content\Plugins\63bits-bsforms\forms.js" />
+    <Content Include="Content\Plugins\63bits-components\Components.js" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold_up.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight_up.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular_up.svg" />
+    <Content Include="Content\Plugins\63bits-fonts\fonts.css" />
+    <Content Include="Content\Plugins\Angle\Css\animate.css" />
+    <Content Include="Content\Plugins\Angle\Css\app.css" />
+    <Content Include="Content\Plugins\Angle\Css\theme-a.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-grid.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-grid.min.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-reboot.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap.min.css" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.bundle.js" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.js" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.min.js" />
+    <Content Include="Content\Plugins\bxslider-4\images\bx_loader.gif" />
+    <Content Include="Content\Plugins\bxslider-4\images\controls.png" />
+    <Content Include="Content\Plugins\bxslider-4\jquery.bxslider.css" />
+    <Content Include="Content\Plugins\bxslider-4\jquery.bxslider.js" />
+    <Content Include="Content\Plugins\bxslider-4\jquery.bxslider.min.css" />
+    <Content Include="Content\Plugins\bxslider-4\jquery.bxslider.min.js" />
+    <Content Include="Content\Plugins\Dropzone\basic.min.css" />
+    <Content Include="Content\Plugins\Dropzone\dropzone.js" />
+    <Content Include="Content\Plugins\Dropzone\dropzone.min.css" />
+    <Content Include="Content\Plugins\Fancybox\FancyMethods.js" />
+    <Content Include="Content\Plugins\Fancybox\iframe examples\iframe-bootstraped.html" />
+    <Content Include="Content\Plugins\Fancybox\iframe examples\iframe.html" />
+    <Content Include="Content\Plugins\Fancybox\jquery.fancybox.css" />
+    <Content Include="Content\Plugins\Fancybox\jquery.fancybox.js" />
+    <Content Include="Content\Plugins\Fancybox\jquery.fancybox.min.css" />
+    <Content Include="Content\Plugins\Fancybox\jquery.fancybox.min.js" />
+    <Content Include="Content\Plugins\Fancybox\style.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\all.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\all.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\brands.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\brands.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\fontawesome.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\fontawesome.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\regular.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\regular.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\solid.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\solid.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\svg-with-js.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\svg-with-js.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\v4-shims.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\css\v4-shims.min.css" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Plugins\FontAwesome\font-awesome-animation.min.css" />
+    <Content Include="Content\Plugins\jQuery\jquery-3.3.1.min.js" />
+    <Content Include="Content\Plugins\jQuery\jquery.maskedinput.min.js" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jquery-confirm-3.3.0\jquery-confirm.min.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jquery-confirm-3.3.0\jquery-confirm.min.js" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.js" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.min.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.min.js" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.structure.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.structure.min.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.theme.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\jQueryUI-1.12.1\jquery-ui.theme.min.css" />
+    <Content Include="Content\Plugins\jQuery\Plugins\NestedSortable\jquery.mjs.nestedSortable.js" />
+    <Content Include="Content\Plugins\jQuery\numericInput.min.js" />
+    <Content Include="Content\Plugins\jsc\client.js" />
+    <Content Include="Content\Plugins\jsc\client.min.js" />
+    <Content Include="Content\Plugins\Preloader\preloader.css" />
+    <Content Include="Content\Plugins\Preloader\preloader.js" />
+    <Content Include="Content\Plugins\Select2\css\select2-bootstrap.min.css" />
+    <Content Include="Content\Plugins\Select2\css\select2.min.css" />
+    <Content Include="Content\Plugins\Select2\js\select2.full.min.js" />
+    <Content Include="Content\Plugins\Select2\js\select2.min.js" />
+    <Content Include="Content\Plugins\SuccessErrorMessage\successErrorMessage.css" />
+    <Content Include="Content\Plugins\SuccessErrorMessage\successErrorMessage.js" />
+    <Content Include="Content\Plugins\Template7\template7.min.js" />
+    <Content Include="Content\Plugins\Tinymce\jquery.tinymce.min.js" />
+    <Content Include="Content\Plugins\Tinymce\license.txt" />
+    <Content Include="Content\Plugins\Tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Content\Plugins\Tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Content\Plugins\Tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\example\dialog.html" />
+    <Content Include="Content\Plugins\Tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\FileManager\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\FormatingToolbarButtons\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Content\Plugins\Tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Content\Plugins\Tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Content\Plugins\Tinymce\themes\modern\theme.min.js" />
+    <Content Include="Content\Plugins\Tinymce\tinymce.min.js" />
+    <Content Include="Content\Plugins\Tinymce\TinyMceHelper.js" />
+    <Content Include="Content\Plugins\Utils\utils.css" />
+    <Content Include="Content\Plugins\Utils\utils.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CarouselController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FaqController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserManagementController.cs" />
+    <Compile Include="Areas\Admin\Filters\BeforeAdminPageLoad.cs" />
+    <Compile Include="Areas\Admin\Filters\TabsInitialization.cs" />
+    <Compile Include="Areas\Admin\Models\AuthModels.cs" />
+    <Compile Include="Areas\Admin\Models\CarouselModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoriesModel.cs" />
+    <Compile Include="Areas\Admin\Models\DictionaryModels.cs" />
+    <Compile Include="Areas\Admin\Models\FaqModel.cs" />
+    <Compile Include="Areas\Admin\Models\LayoutModel.cs" />
+    <Compile Include="Areas\Admin\Models\OrdersModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductsModel.cs" />
+    <Compile Include="Areas\Admin\Models\TabsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserManagementModels.cs" />
+    <Compile Include="Areas\Admin\Reusables\ControllerBaseClasses.cs" />
+    <Compile Include="Areas\Admin\Controllers\DictionariesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filters\BeforePageLoad.cs" />
+    <Compile Include="Filters\InitAccountTabs.cs" />
+    <Compile Include="Filters\UnAuthorisedUserRestriction.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountLayoutModel.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AuthModel.cs" />
+    <Compile Include="Models\BasketModel.cs" />
+    <Compile Include="Models\CheckoutModels.cs" />
+    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\WebsiteLayoutModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reusables\ControllerClasses.cs" />
+    <Compile Include="Reusables\Core\BaseClasses.cs" />
+    <Compile Include="Reusables\Core\ControllerActionRouteNames.cs" />
+    <Compile Include="Reusables\Core\GlobalSuccessErrorAssistance.cs" />
+    <Compile Include="Reusables\Core\LocalUtilities.cs" />
+    <Compile Include="Reusables\Core\SessionAssistance.cs" />
+    <Compile Include="Reusables\Core\ViewNames.cs" />
+    <Compile Include="Reusables\Core\SharedModel.cs" />
+    <Compile Include="Reusables\DevexpressReport\InvoiceReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reusables\DevexpressReport\InvoiceReport1.designer.cs">
+      <DependentUpon>InvoiceReport1.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\UserManagement\Permissions.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManagement\Users.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DevexpressGrid.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DevexpressGridLinqDataSource.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DevexpressTree.cshtml" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold.woff2" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold_up.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold_up.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold_up.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\bold_up.woff2" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extralight.woff2" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight_up.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight_up.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extraLight_up.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\extralight_up.woff2" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular.woff2" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular_up.eot" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular_up.ttf" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular_up.woff" />
+    <Content Include="Content\Plugins\63bits-fonts\BPG_DejaVuSans\regular_up.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionaries\Dictionaries.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\PopupLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\NotFound.cshtml" />
+    <Content Include="Content\Plugins\Tinymce\langs\readme.md" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\Plugins\Tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Areas\Admin\Views\Faq\Faq.cshtml" />
+    <Content Include="Areas\Admin\Views\Carousel\CarouselGrid.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Tabs.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Product.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\ProductsGrid.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Orders.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\OrderDetails\OrderDetails.cshtml" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold.woff2" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold_up.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold_up.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold_up.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\bold_up.woff2" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light.woff2" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light_up.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light_up.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light_up.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\light_up.woff2" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular.woff2" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular_up.eot" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular_up.ttf" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular_up.woff" />
+    <Content Include="Content\fonts\BPG_DejaVuSans\regular_up.woff2" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.eot" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.otf" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.ttf" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.woff" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\bold.woff2" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.eot" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.otf" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.ttf" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.woff" />
+    <Content Include="Content\fonts\MrgvlovaniCaps\regular.woff2" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-grid.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\css\bootstrap.min.css.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.js.map" />
+    <Content Include="Content\Plugins\Bootstrap\4.1.3\js\bootstrap.min.js.map" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\Plugins\FontAwesome\5.5.0\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Carousel\CarouselItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\CategoriesTree.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Category.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\SuccessErrorPartialView.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\FileTreeEditor\FileTreeEditor.cshtml" />
+    <Content Include="Views\Shared\FileTreeEditor\FileTreeEditorFile.cshtml" />
+    <Content Include="Views\Shared\FileTreeEditor\FileTreeEditorFolder.cshtml" />
+    <Content Include="Views\Shared\FileTree\FileTree.cshtml" />
+    <Content Include="Views\Shared\FileTree\FileTreeFile.cshtml" />
+    <Content Include="Views\Shared\FileTree\FileTreeFolder.cshtml" />
+    <Content Include="Views\Auth\SignUp.cshtml" />
+    <Content Include="Views\Auth\SignIn.cshtml" />
+    <Content Include="Views\Auth\ForgotPassword.cshtml" />
+    <Content Include="Views\Auth\ForgotPasswordResetPassword.cshtml" />
+    <Content Include="Views\Shared\WebsiteLayout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Products\Products.cshtml" />
+    <Content Include="Views\Products\ProductsByCategory.cshtml" />
+    <Content Include="Views\Products\Product.cshtml" />
+    <Content Include="Views\Account\AccountLayout.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Orders.cshtml" />
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Checkout\Checkout.cshtml" />
+    <Content Include="Views\Checkout\CheckoutFail.cshtml" />
+    <Content Include="Views\Checkout\CheckoutSuccess.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\PagerPartial.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c38e75f9-629d-42d1-88eb-c28baafde887}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reusables\DevexpressReport\InvoiceReport1.resx">
+      <DependentUpon>InvoiceReport1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3803</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3815/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

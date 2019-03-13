@@ -1,0 +1,62 @@
+﻿@model HomeModel.PageViewModel
+@section HeaderSection{
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/bxslider-4/jquery.bxslider.min.css">
+}
+
+<main class="page home">
+    <div class="intro">
+        <div class="slider">
+            @if (Model.HasCarousel)
+            {
+                foreach (var Item in Model.Carousel)
+                {
+                    <div>
+                        <div class="slide-content">
+                            <span class="img" style="background-image: url('@Html.Raw(Item.CarouselImageHttpPath)')"></span>
+                            <div class="container xl">
+                                <section>
+                                    <h2>@Item.CarouselCaption</h2>
+                                    <p>@Html.Raw(Item.CarouselText)</p>
+                                    @if (Item.HasUrl)
+                                    {
+                                        <a href="@Html.Raw(Item.CarouselUrl)" class="btn primary-btn">Learn More</a>
+                                    }
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="section-list">
+        @if (Model.HasCategories)
+        {
+            foreach (var Item in Model.Categories)
+            {
+                <section>
+                    <div class="container">
+                        <div class="img-wrap">
+                            <span class="img" style="background-image: url('@Html.Raw(Item.CategoryImageFilename)')"></span>
+                        </div>
+                        <div class="info-wrap">
+                            <div class="info">
+                                <h2 class="title">@Item.CategoryCaption</h2>
+                                <div class="text">
+                                    @Html.Raw(Item.CategoryDescription)
+                                </div>
+                                <a href="@Html.Raw(Item.CategoryNavigateUrl)" class="btn">Browse Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+        }
+    </div>
+</main>
+
+@section FooterSection{
+    <script src="~/Content/Plugins/bxslider-4/jquery.bxslider.min.js"></script>
+    <script src="~/Content/js/Home/Index.js"></script>
+}

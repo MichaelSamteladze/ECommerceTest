@@ -1,0 +1,22 @@
+﻿@model PermissionsModel.PageViewModel
+@section HeaderSection{
+@Html.DevExpress().GetStyleSheets(new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList })
+@Html.DevExpress().GetScripts(new Script { ExtensionSuite = ExtensionSuite.TreeList })
+}
+@if (Model.ShowAddNewButton)
+{
+    <div class="actions-row">
+        <button class="btn btn-oval btn-default js-add-new-button"><i class="fa fa-plus"></i> Add</button>
+    </div>
+}
+@if (Model.ShowTree)
+{
+<div class="row">
+    <div class="col-lg-12">
+        @Html.Partial(ViewNames.Admin.Shared.DevexpressTree, Model.Tree)
+    </div>
+</div>
+}
+@section FooterSection{
+<script src="~/Areas/Admin/Content/Scripts/UserManagement/Permissions.js"></script>
+}

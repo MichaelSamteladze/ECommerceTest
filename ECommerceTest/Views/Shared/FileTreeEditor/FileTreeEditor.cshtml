@@ -1,0 +1,16 @@
+﻿@model List<TreeNodeItem>
+<div class="sortable">
+    <ul>
+        @foreach (var Item in Model)
+        {
+            if (Item.IsFolder)
+            {
+                @Html.Partial(ViewNames.Shared.FileTreeEditor.Folder, Item)
+            }
+            else
+            {
+                @Html.Partial(ViewNames.Shared.FileTreeEditor.File, Item)
+            }
+        }
+    </ul>
+</div>

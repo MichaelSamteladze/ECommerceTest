@@ -1,0 +1,79 @@
+﻿@model TreeNodeItem
+<li data-id="@Model.NodeID" class="tree-item folder" data-caption="@Html.Raw(Model.Caption)" data-filename="@Html.Raw(Model.Filename)" data-navigate-url="@Html.Raw(Model.NavigateUrl)" data-tree-item>
+    <span class="drag"><i class="fas fa-arrows-alt"></i></span>
+    <div class="handle @(Model.IsDisabled?Html.Raw("disabled"):null)">
+        <div class="left-col">
+            <i class="fas fa-folder-open"></i>
+            <div class="name"><a @(Model.HasNavigateUrl ? Html.Raw($"href=\"{Model.NavigateUrl}\"") : null) @(Model.IsTargetBlank ? Html.Raw("target =\"_blank\"") : null) data-caption-tag>@Html.Raw(Model.Caption)</a></div>
+            <input class="hidden" type="text" value="" data-textbox-tag />
+        </div>
+        <div class="right-col">
+            @if (Model.ShowToggler1)
+            {
+                <span class="toggler">
+                    @Model.TextToggler1
+                    <label class="toggle">
+                        <input type="checkbox" @(Model.IsToggler1Checked ? Html.Raw("checked") : null) data-toggle-toggler1-checkbox />
+                        <i></i>
+                    </label>
+                </span>
+            }
+            @if (Model.ShowToggler2)
+            {
+                <span class="toggler">
+                    @Model.TextToggler2
+                    <label class="toggle">
+                        <input type="checkbox" @(Model.IsToggler2Checked ? Html.Raw("checked") : null) data-toggle-toggler2-checkbox />
+                        <i></i>
+                    </label>
+                </span>
+            }  
+            @if (Model.ShowCustomButton && Model.ShowCustomButtonFirst)
+            {
+                <a href="#" data-custom-button="">
+                    <i class="fas @Html.Raw(Model.CustomButtonIcon)"></i>
+                </a>
+            }
+            @if (Model.ShowAddNewButton)
+            {
+                <a href="#" data-addnew-node-button="">
+                    <i class="fas fa-plus"></i>
+                </a>
+            }
+            @if (Model.ShowEditButton)
+            {
+            <a href="#" data-edit-node-button="">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+            }
+            @if (Model.ShowDeleteButton)
+            {
+            <a href="#" data-hash="@Model.Hash"  data-delete-node-button data-folder-item>
+                <i class="fas fa-trash-alt"></i>
+            </a>
+            }
+            @if (Model.ShowCustomButton && Model.ShowCustomButtonLast)
+            {
+                <a href="#" data-custom-button="">
+                    <i class="@Html.Raw(Model.CustomButtonIcon)"></i>
+                </a>
+            }
+        </div>
+    </div>
+    <ul>
+        @if (Model.HasChildren)
+        {
+            foreach (var Item in Model.Children)
+            {
+                if (Item.IsFolder)
+                {
+                    @Html.Partial(ViewNames.Shared.FileTreeEditor.Folder, Item)
+                }
+                else
+                {
+                    @Html.Partial(ViewNames.Shared.FileTreeEditor.File, Item)
+                }
+            }
+        }
+    </ul>
+</li>

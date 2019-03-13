@@ -1,0 +1,25 @@
+﻿@model List<Core.Utilities.Pager.Item>
+@if (Model != null)
+{
+<div class="pager">
+    <ul>
+        @foreach (var Item in Model)
+        {
+            <li> 
+                @if (Item.IsActive)
+                {
+                <a class="active">@Html.Raw(Item.Text)</a>
+                }
+                else if (Item.HasUrl)
+                {
+                <a href="@Html.Raw(Item.Url)">@Html.Raw(Item.Text)</a>
+                }
+                else
+                {
+                <a>@Html.Raw(Item.Text)</a>
+                }
+            </li>
+        }
+    </ul>
+</div>
+}

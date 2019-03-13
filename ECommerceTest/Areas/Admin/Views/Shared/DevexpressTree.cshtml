@@ -1,0 +1,12 @@
+﻿@model dynamic
+@{
+    var Tree = Html.DevExpress().TreeList(settings =>
+    {
+        Model.InitTreeSettings(Settings: settings, Html: Html, Url: Url);
+    });
+    if (Model.IsError)
+    {
+        Tree.SetEditErrorText(Model.ErrorMessage);
+    }
+}
+@Tree.Bind(Model.TreeNodes).GetHtml()

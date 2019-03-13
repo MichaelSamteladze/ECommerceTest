@@ -1,0 +1,103 @@
+﻿@model FaqModel.PageViewModel
+
+@section HeaderSection{
+    <link href="~/Content/Plugins/utils/utils.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/63BITS-BSForms/forms.css" rel="stylesheet" />
+}
+
+<div class="actions-row">
+    <button class="btn btn-oval btn-default js-add-new-button" data-toggle="modal"><i class="fas fa-plus"></i> <span>Add</span></button>
+</div>
+<div class="faq-items">
+    @if (Model.HasFaqViewItems)
+    {
+    foreach (var Item in Model.FaqViewItems)
+    {
+        <div id="faq@(Item.FaqID)" class="well" data-id="@Item.FaqID" >
+            <div class="media">
+                <span class="drag mr-3 js-drag-me"><i class="fas fa-arrows-alt"></i></span>
+                <div class="media-body">
+                    <h4 class="media-heading ge">@Item.Question</h4><br />
+                    <div class="faq-answer ge">@Html.Raw(Item.Answer)</div>
+
+                    <br />
+                    <ul class="list-inline list-unstyled">
+                        <li class="list-inline-item"><a href="#" class="faq-edit" data-id="@Item.FaqID"><i class="fas fa-pencil-alt"></i> Edit </a></li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item"><a href="#" class="faq-delete"><i class="fas fa-trash-alt"></i> Delete</a></li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">
+                            <span class="faq-published-status">
+                                @if (Item.IsPublished)
+                                { <i class="fas fa-check"></i>}
+                                else
+                                { <i class="fas fa-minus-circle"></i>}
+                                Is Published
+                            </span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+    }
+</div>
+
+
+
+@section FooterSection{
+<div class="modal fade js-modal-faq-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">FAQ</h4>
+                <button aria-label="Close" data-dismiss="modal" class="close iframe" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label>Question</label>
+                        <textarea id="QuestionTextBox" name="Question" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Answer</label>
+                        <textarea id="AnswerTextBox" class="form-control apply-tinymce"></textarea>                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Is Published?</label>
+                        <label class="toggler toggler-lg">
+                            <input type="checkbox" id="IsPublishedChechBox" name="IsPublished" />
+                            <i></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-circle btn-primary js-save-button"><i class="fas fa-save"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Plugins/jQuery/Plugins/jQueryUI-1.12.1/jquery-ui.min.js"></script>    
+<script src="~/Content/Plugins/Tinymce/tinymce.min.js"></script>
+<script src="~/Content/Plugins/Tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/Plugins/Tinymce/TinyMceHelper.js"></script>    
+<script src="~/Areas/Admin/Content/Scripts/Faq/FAQ.js"></script>    
+<script>
+    FaqModel.TextConfirmDelete = '@Model.TextConfirmDelete';
+    FaqModel.UrlAdd = '@Model.UrlAdd';
+    FaqModel.UrlUpdate = '@Model.UrlUpdate';
+    FaqModel.UrlDelete = '@Model.UrlDelete';
+    FaqModel.UrlSync = '@Model.UrlSync';
+</script>
+}

@@ -1,0 +1,167 @@
+﻿@{ var Model = LocalUtilities.GetLayoutViewModel<AdminLayoutModel>(ViewData: ViewData, Key: Core.Utilities.Constants.ViewData.LayoutViewModel); }
+<!DOCTYPE html>
+<html lang="en" class="csstransforms3d ">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@Html.Raw(Model.PageTitleHead)</title>
+    <link rel="stylesheet" href="/Content/Plugins/FontAwesome/5.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/Content/Plugins/63bits-fonts/fonts.css" />
+    @*<link rel="stylesheet" href="/Content/Plugins/Roboto-v18/css/roboto.css" />*@
+    <link rel="stylesheet" href="/Content/Plugins/Bootstrap/4.1.3/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/Content/Plugins/Angle/Css/animate.css" />
+    <link rel="stylesheet" href="~/Content/Plugins/Angle/Css/app.css" />
+    <link rel="stylesheet" href="~/Content/Plugins/Angle/Css/theme-a.css" />
+    <link href="~/Content/Plugins/jQuery/Plugins/jquery-confirm-3.3.0/jquery-confirm.min.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/Content/Css/Devexpress.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Css/style.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/Utils/utils.css" rel="stylesheet" />
+
+    <script src="~/Content/Plugins/jQuery/jquery-3.3.1.min.js"></script>    
+    @RenderSection("HeaderSection", false)
+</head>
+<body>
+    <div class="wrapper">
+        <header class="topnavbar-wrapper">
+            <nav class="navbar topnavbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand">
+                        <div class="brand-logo">
+                            <img src="/content/Images/logo.png" class="img-fluid" width="100" />
+                        </div>
+                        <div class="brand-logo-collapsed">
+                            <img src="/areas/admin/content/Images/logo-small.png" class="img-fluid" width="100" />
+                        </div>
+                    </a>
+                </div>
+     
+
+                <ul class="navbar-nav flex-row">
+                    <li class="nav-item dropdown dropdown-list">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right animated fadeIn">
+                            <div class="dropdown-item">
+                                <div class="list-group">
+                                    <a href="@Model.UrlLogout" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside class="aside-container">
+            <div class="aside-inner">
+                <nav class="sidebar" data-sidebar-anyclick-close="">
+                    <ul class="sidebar-nav">
+                        <li class="has-user-block">
+                            <div id="user-block">
+                                <div class="item user-block">
+                                    <div class="user-block-picture">
+                                        <div class="user-block-status">
+                                            <img class="img-thumbnail rounded-circle" src="~/Areas/Admin/Content/Images/no-avatar.png" alt="Avatar" width="60" height="60" title="@Model.UserItem.Fullname">
+                                        </div>
+                                    </div>
+                                    <div class="user-block-info">
+                                        <span class="user-block-name">@Model.UserItem.Fullname</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        @if (Model.HasMenu)
+                        {
+                            foreach (var Item in Model.Menu)
+                            {
+                                <li data-menu-top-item @(Item.IsSelected ? Html.Raw("class=\"active\"") : null)>
+                                    <a href="@(Item.HasChildren ? $"#menu-{Html.Raw(Item.NavigateUrl)}" : $"{Html.Raw(Item.NavigateUrl)}")" @(Item.HasChildren ? Html.Raw("data-toggle=\"collapse\"") : null) aria-expanded="false">
+                                        <i class="@Html.Raw(Item.Icon)"></i>
+                                        <span>@Html.Raw(Item.Caption)</span>
+                                    </a>
+                                    @if (Item.HasChildren)
+                                    {
+                                        <ul class="sidebar-nav sidebar-subnav collapse @(Item.IsSelected ? Html.Raw("show") : null)" id="menu-@Html.Raw(Item.NavigateUrl)">
+                                            <li class="sidebar-subnav-header">@Html.Raw(Item.Caption)</li>
+                                            @foreach (var SubItem in Item.Children)
+                                            {
+                                                <li @(SubItem.IsSelected ? Html.Raw("class=\"active\"") : null)>
+                                                    <a href="@Html.Raw(SubItem.NavigateUrl)">
+                                                        <span>@Html.Raw(SubItem.Caption)</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <section class="section-container">
+            <div class="content-wrapper">
+                <div class="content-heading">
+                    <div>
+                        @Html.Raw(Model.PageTitle)
+                    </div>
+                </div>
+                @if (Model.HasBreadcrumbs && Model.Breadcrumbs.Items.Count > 2)
+                {
+                <ol class="breadcrumb">
+                    @foreach (var Item in Model.Breadcrumbs.Items)
+                    {
+                        if (Item.IsLastItem)
+                        {
+                            <li class="breadcrumb-item active">@Html.Raw(Item.Caption)</li>
+                        }
+                        else if (Item.HasNavigateUrl)
+                        {
+                            <li class="breadcrumb-item">
+                                <a href="@Html.Raw(Item.NavigateUrl)">@Html.Raw(Item.Caption)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="breadcrumb-item">@Html.Raw(Item.Caption)</li>
+                        }
+                    }
+                </ol>
+                }
+                @RenderBody()
+            </div>
+        </section>
+
+        <footer class="footer-container">
+            <span>Developed BY <a><strong>Michael Samteladze</strong></a> &copy; @DateTime.Now.Year </span>
+        </footer>
+    </div>
+
+    @if (Model.IsSuccessErrorPartialInitiated)
+    {
+        <link href="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.css" rel="stylesheet" />
+        <script src="~/Content/Plugins/SuccessErrorMessage/successErrorMessage.js"></script>
+        @Html.Partial(ViewNames.Shared.SuccessErrorPartialView, Model.SuccessErrorModel)
+    }
+
+    <script src="~/Content/Plugins/Bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="~/Content/Plugins/Utils/utils.js"></script>
+    <script src="~/Content/Plugins/Preloader/preloader.js"></script>
+    <script src="~/Content/Plugins/jQuery/Plugins/jquery-confirm-3.3.0/jquery-confirm.min.js"></script>
+    <script src="~/Areas/Admin/Content/Scripts/Global.js"></script>
+    <script src="~/Content/Plugins/63bits-components/Components.js"></script>
+
+    <script>
+        Globals.TextError = '@Model.TextError';
+        Globals.TextSuccess = '@Model.TextSuccess';
+    </script>
+    @RenderSection("FooterSection", false)
+</body>
+</html>

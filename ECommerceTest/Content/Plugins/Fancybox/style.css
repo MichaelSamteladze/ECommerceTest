@@ -1,0 +1,150 @@
+/* ==================== fancubox 3.5.2 ==================== */
+
+
+/* ----------- fancybox-slide ----------- */
+.fancybox-slide {
+    padding: 20px;
+}
+
+@media (max-width:991px){
+	.fancybox-slide{
+		padding: 15px;
+	}
+}
+@media (max-width:767px){
+	.fancybox-slide{
+		padding: 10px;
+	}
+}
+/* ----------- /fancybox-slide ----------- */
+
+
+/* ----------- small close button ----------- */
+.close-popup-btn{
+	width:auto;
+    height:auto;
+	background-color: transparent;
+	border: 0;
+	outline: none !important;
+	padding: 10px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+
+.fancybox-content > .close-popup-btn{
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.close-popup-btn svg{
+	display: block;
+    width: 10px;
+    height: 10px;
+	fill: #555;
+	opacity: 0.8;
+	
+	position: relative;
+	z-index: 2;
+	
+	transition: opacity .25s;
+}
+.close-popup-btn:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 50%;
+    
+	position: absolute;
+	top: 0;
+	left: 0;
+    z-index: 1;
+	
+    transition: background .25s;
+}
+.close-popup-btn:after {
+    content: '';
+	position: absolute;
+	top: -5px;
+	bottom: -5px;
+	left: -5px;
+	right: -5px;
+    z-index: 0;
+}
+.close-popup-btn:hover:before{
+	background: #eee;
+}
+.close-popup-btn:hover svg{
+	opacity: 1;
+}
+
+/* ----------- /small close button ----------- */
+
+
+/* ----------- fancybox-content ----------- */
+.fancybox-content{
+	padding: 20px;
+}
+/* ----------- /fancybox-slide ----------- */
+
+
+/* ----------- iframe ----------- */
+.fancybox-slide--iframe .fancybox-content,
+.iframe-body{
+	background-color: transparent;
+}
+.fancybox-slide--iframe .fancybox-content{
+	margin: 0;
+}
+.fancybox-slide--iframe .fancybox-content > .close-popup-btn{
+	right: 24px;
+}
+
+.iframe-body .modal-content{
+	width: 100%;
+	max-height: 100vh;
+	background-color: #fff;
+	border-color: rgba(255,255,255,0.2);
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+}
+.iframe-body .modal-body{
+	height: 100%;
+	-webkit-overflow-scrolling:touch;
+	overflow: auto;
+}
+.iframe-body button.close{
+	outline: none !important;
+}
+/* ----------- /iframe ----------- */
+
+
+/* ----------- inline ----------- */
+.fancybox-inline-popup .fancybox-slide{
+	text-align: center;
+}
+.fancybox-inline-popup-content{
+	display: none;
+}
+.fancybox-inline-popup-content:not(.container){
+	max-width: 640px;
+	margin: 0 auto;
+}
+/* ----------- /inline ----------- */
+
+
+/* ----------- ajax ----------- */
+.fancybox-ajax-popup .fancybox-slide{
+	text-align: center;
+}
+.fancybox-ajax-popup-content:not(.container):not(.popup-container){
+	max-width: 640px;
+	margin: 0 auto;
+}
+/* ----------- /inline ----------- */

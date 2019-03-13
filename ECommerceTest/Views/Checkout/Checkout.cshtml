@@ -1,0 +1,239 @@
+﻿@model CheckoutModel.PageViewModel
+
+@section HeaderSection{
+    <link href="~/Content/Plugins/Preloader/preloader.css" rel="stylesheet" />
+}
+
+<main class="page">
+    <div class="container sm">
+        <div class="form">
+                <div>
+                    <div class="fieldset" id="ShippingDiv">
+                        <h3 class="title sm">SHIPPING INFORMTION</h3>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>First Name *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingFirstname" name="@nameof(Model.ShippingFirstname)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Last Name *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingLastname" name="@nameof(Model.ShippingLastname)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Country *</label>
+                                <select class="form-control" name="@nameof(Model.ShippingCountryID)">
+                                    <option></option>
+                                    @foreach (var Item in Model.ShippingCountries)
+                                    {
+                                        <option value="@Item.Key" @(Model.ShippingCountryID == Item.Key ? Html.Raw("selected") : null)>@Item.Value</option>
+                                    }
+                                </select>
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State / Region *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingRegion" name="@nameof(Model.ShippingRegion)">                                
+                                <span class="help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>City *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingCity" name="@nameof(Model.ShippingCity)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Zip *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingZip" name="@nameof(Model.ShippingZip)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Address 1 *</label>
+                                <input class="form-control" type="text" value="@Model.ShippingAddress1" name="@nameof(Model.ShippingAddress1)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address 2</label>
+                                <input class="form-control" type="email" value="@Model.ShippingAddress2" name="@nameof(Model.ShippingAddress2)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input id="@nameof(Model.IsBillingSameAsShipping)" class="form-check-input js-billing-same-as-shipping-checkbox" type="checkbox" value="true" name="@nameof(Model.IsBillingSameAsShipping)" @(Model.IsBillingSameAsShipping ? Html.Raw("checked") : null)>
+                                <label for="@nameof(Model.IsBillingSameAsShipping)" class="form-check-label">
+                                    Billing Same As Shipping
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fieldset" id="BillingDiv" @(Model.IsBillingSameAsShipping ? Html.Raw("style=\"display:none;\"") : null)>
+                        <h3 class="title sm">BILLING INFORMTION</h3>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>First Name *</label>
+                                <input class="form-control" type="text" value="@Model.BillingFirstname" name="@nameof(Model.BillingFirstname)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Last Name *</label>
+                                <input class="form-control" type="text" value="@Model.BillingLastname" name="@nameof(Model.BillingLastname)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Country *</label>
+                                <select class="form-control" name="@nameof(Model.BillingCountryID)">
+                                    <option></option>
+                                    @foreach (var Item in Model.BillingCountries)
+                                    {
+                                        <option value="@Item.Key" @(Model.BillingCountryID == Item.Key ? Html.Raw("selected") : null)>@Item.Value</option>
+                                    }
+                                </select>
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State / Region *</label>
+                                <input class="form-control" type="text" value="@Model.BillingRegion" name="@nameof(Model.BillingRegion)">                                
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>City *</label>
+                                <input class="form-control" type="text" value="@Model.BillingCity" name="@nameof(Model.BillingCity)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Zip *</label>
+                                <input class="form-control" type="text" value="@Model.BillingZip" name="@nameof(Model.BillingZip)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Address 1 *</label>
+                                <input class="form-control" type="text" value="@Model.BillingAddress1" name="@nameof(Model.BillingAddress1)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address 2</label>
+                                <input class="form-control" type="email" value="@Model.BillingAddress2" name="@nameof(Model.BillingAddress2)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pay-info-section">
+                    <div class="head">
+                        <h3 class="title sm">PAYMENT INFORMTION</h3>
+                    </div>
+
+                    <div class="OrderTotal">
+                        <ul class="list-group list-group-unbordered">
+                            @if(Model.HasOrderDetails)
+                            {
+                                foreach(var Item in Model.OrderDetails)
+                                {
+                                    <li class="list-group-item">
+                                        <span>@Html.Raw(Item.Key)</span>
+                                        <span class="value">@Html.Raw(Item.Value)</span>
+                                    </li>
+                                }
+                            }
+                            @*<li class="list-group-item">
+                                    <span>SubTotal:</span>
+                                    <span class="value">$ <span id="Subtotal"></span></span>
+                                </li>*@
+                            <li class="list-group-item total">
+                                <span>Total:</span>
+                                <span class="value">@Model.OrderPriceTotal</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fieldset">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" id="PaymentOptionCard" type="radio" value="@Model.PaymentOptionCardID" name="@nameof(Model.PaymentOptionID)" @(Model.PaymentOptionID == Model.PaymentOptionCardID || Model.PaymentOptionID == null ? Html.Raw("checked") : null) />
+                                        <label class="custom-control-label" for="PaymentOptionCard"><img src="~/Content/Images/CreditCardLogo.png" class="credit-cards-img"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" id="PaymentOptionPaypal" type="radio" value="@Model.PaymentOptionPaypalID" name="@nameof(Model.PaymentOptionID)" @(Model.PaymentOptionID == Model.PaymentOptionPaypalID ? Html.Raw("checked") : null) />
+                                        <label class="custom-control-label" for="PaymentOptionPaypal"><img src="~/Content/Images/paypalLogo.png" class="paypal-img"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row js-credit-card-row">
+                            <div class="form-group col-md-6">
+                                <label>Credit Card *</label>
+                                <input class="form-control" type="text" value="@Model.CreditCardNumber" name="@nameof(Model.CreditCardNumber)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Expiration *</label>
+                                <input class="form-control js-credit-cart-exp-date-textbox" type="text" placeholder="mm/yy" value="@Model.CreditCardExpirationDate" name="@nameof(Model.CreditCardExpirationDate)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>CCV *</label>
+                                <input class="form-control" maxlength="4" type="text" value="@Model.CreditCardCcv" name="@nameof(Model.CreditCardCcv)">
+                                <span class=" help-block error-text"></span>
+                            </div>
+                            <div class="foo">
+                                <p>
+                                    Card Number: 4007000000027, Expiration: ANY, CCV: ANY
+                                </p>
+                            </div>
+                        </div>
+
+                        <button class="btn primary-btn submit-btn js-checkout-button" type="button">Checkout</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</main>
+
+@if (Model.HasPartialView)
+{
+    @Html.Raw(Model.PartialView)
+}
+
+@section FooterSection
+{    
+    <script src="~/Content/Plugins/63bits-bsforms/forms.js"></script>
+    <script src="~/Content/Plugins/Preloader/preloader.js"></script>
+    <script src="~/Content/Plugins/jQuery/jquery.maskedinput.min.js"></script>
+    <script src="~/Content/js/Checkout/Checkout.js"></script>    
+    @if (Model.Form.HasErrors)
+    {
+        <script>
+            $(function(){
+                Validation.Init({ErrorsJson:@Html.Raw(Model.Form.ErrorsJson)}).ShowErrors();
+            });
+        </script>
+
+    }
+    @if (Model.IsPaymentFailed)
+    {
+        <script>
+            alert('@Model.TextPaymentFailed')
+        </script>
+    }
+}

@@ -1,0 +1,189 @@
+﻿.sortable {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    /*max-width: 800px;*/
+    list-style: none;
+    line-height: 20px;
+}
+
+.sortable ul {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sortable ul ul {
+    padding-left: 30px;
+}
+.tree-item,
+.sortable .placeholder,
+.sortable .drop-placeholder {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 20px;
+    line-height: 20px;
+}
+.sortable .placeholder,
+.sortable .drop-placeholder {
+    margin: 5px 0;
+    padding: 0;
+    min-height: 38px !important;
+    background: #F0F9FF;
+    border: 2px dashed #BED2DB;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tree-item a {
+    text-decoration: none;
+}
+.tree-item .fas{
+    min-width:18px;
+}
+.sortable-error {
+    background-color: transparent;
+    border: 1px dashed #BF0B0E;
+}
+
+/* ---------- drag ---------- */
+.tree-item .drag,
+.tree-item .helper .drag {
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    text-align: center;
+}
+.tree-item .drag.disabled{
+    cursor:no-drop;
+}
+.tree-item .helper .drag {
+    top: 12px;
+}
+.tree-item .drag i,
+.tree-item .helper .drag i {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+}
+.tree-item ui-sortable-helper .drag {
+    top: 14px;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+}
+/* ---------- /drag ---------- */
+
+
+/* ---------- handle ---------- */
+.tree-item .handle {
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height: 38px;
+    margin: 5px 0;
+    padding: 4px 12px 4px 30px;
+    background: #F8FAFF;
+    border: 1px solid #DAE2EA;
+    color: #7C9EB2;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tree-item .handle:hover {
+    color: #438EB9;
+    background: #F4F6F7;
+    border-color: #DCE2E8;
+}
+
+/* icons */
+.tree-item .handle .fa-arrows,
+.tree-item .handle .fa-folder,
+.tree-item .handle .fa-folder-open {
+    cursor: pointer;
+}
+.tree-item .handle > div .fa-plus {
+    display:block;
+    color: #5cb85c;
+}
+
+
+.tree-item .handle > div {
+    display: flex;
+    align-items:center;
+    position:relative;
+}
+/* left col */
+.tree-item .handle > div.left-col{
+    justify-content:flex-start;
+    width:100%;
+    min-height:28px;
+    overflow:hidden;
+}
+.tree-item .handle .left-col .name{
+    max-width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.tree-item .handle .left-col i + .name{
+    padding-top:1px;
+    padding-left:5px;
+}
+.tree-item .handle .left-col .name a {
+    color: #7C9EB2;
+    text-decoration: none;
+    font-weight: 700;
+}
+.tree-item .handle:hover .left-col .name a {
+    color: #438EB9;
+}
+.tree-item .handle .left-col.name a > i {
+    color: #aaa;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.tree-item .handle .name + em{
+    padding-left:4px;
+}
+.tree-item.file .handle em {
+    display: none;
+}
+
+.tree-item .handle .left-col input {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px;
+    font-size: 14px;
+}
+.tree-item .handle .left-col.editable input {
+    display: block;
+}
+
+/* right col */
+.tree-item .handle div.right-col{
+    justify-content:flex-end;
+}
+.tree-item .handle div.right-col > * {
+    margin-left: 10px;
+}
+.tree-item .handle div.right-col i{
+    display:block;
+}

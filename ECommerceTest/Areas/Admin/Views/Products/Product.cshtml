@@ -1,0 +1,119 @@
+﻿@model ProductModel.PageViewModel
+
+@section HeaderSection{
+    <link href="~/Content/Plugins/63bits-bsforms/forms.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/Fancybox/jquery.fancybox.css" rel="stylesheet" />
+
+    @Html.DevExpress().GetStyleSheets(new StyleSheet { ExtensionSuite = ExtensionSuite.Editors })
+    @Html.DevExpress().GetScripts(new Script { ExtensionSuite = ExtensionSuite.Editors })
+}
+
+<div class="tab-pane active" id="Properties" role="tabpanel" aria-labelledby="Properties-tab">
+    <div class="actions-row">
+        <button type="submit" class="btn btn-circle btn-primary js-save-button" form="ProductsPropertiesForm"><i class="fas fa-save"></i></button>        
+    </div>
+    <form id="ProductsPropertiesForm" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label>Published?</label>
+                <label class="toggler toggler-lg">
+                    <input type="checkbox" id="IsPublishedChechBox" name="@nameof(Model.IsPublished)" value="true" @(Model.IsPublished ? Html.Raw("checked") : null) />
+                    <i></i>
+                </label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label>Upload Image</label>
+                <div class="input-group custom-file-group js-custom-file-upload">
+                    <div class="form-control">
+                        <a class="js-attachment js-image-attachment" href="@Html.Raw(Model.ProductImageHttpPath)">@Html.Raw(Model.ProductImageFilename)</a>
+                        <span class="js-new-attachment hidden"></span>
+                    </div>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-warning hidden js-clear-button"><i class="fa fa-times"></i></button>
+                        @if (Model.HasProductImage)
+                        {
+                            <button type="button" data-url="@Html.Raw(Model.UrlProductImageDelete)" data-text-confirm="@Html.Raw(Model.Form.TextConfirmDeleteAttachment)" class="btn btn-danger js-delete-button"><i class="fas fa-trash-alt"></i></button>
+                        }
+                        <span class="btn btn-default custom-file-upload">
+                            <i class="fas fa-folder-open"></i>
+                            <input type="file" name="@nameof(Model.ProductImagePostedFile)" accept="" />
+                        </span>
+                    </span>
+                </div>
+
+                <span class="help-block"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label>Caption</label>
+                <input type="text" name="@nameof(Model.ProductCaption)" class="form-control" value="@Model.ProductCaption" />
+                <p class="help-block">
+                    <span class="error-text"></span>
+                </p>
+            </div>            
+            <div class="form-group col-lg-6">
+                <label>Url Slug</label>
+                <input id="SlugTextBox" type="text" name="@nameof(Model.ProductSlug)" class="form-control" value="@Model.ProductSlug" />
+                <p class="help-block">
+                    <span class="error-text"></span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 form-group">
+                <label>Category</label>
+                <select class="form-control" name="@nameof(Model.CategoryID)">
+                    <option></option>
+                    @foreach (var Item in Model.Categories)
+                    {
+                        <option value="@Item.Key" @(Item.IsSelected ? Html.Raw("selected") : null)>@Item.Value</option>
+                    }
+                </select>
+                <p class="help-block"></p>
+            </div>
+            <div class="col-lg-6 form-group">
+                <label>Price</label>
+                @Html.DevExpress().SpinEdit(
+                    settings =>
+                    {
+                        settings.Name = nameof(Model.ProductPrice);
+                        Model.Form.InitSpinEditSettings(settings);
+                        settings.Properties.DisplayFormatString = Core.Utilities.Constants.Formats.Decimal2Fractions;
+                        settings.Properties.MinValue = 1;
+                        settings.Properties.MaxValue = 10000;                        
+                    }
+                ).Bind(Model.ProductPrice).GetHtml()
+                <p class="help-block"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-12">
+                <label>Description</label>
+                <textarea name="@nameof(Model.ProductDescription)" class="form-control apply-tinymce">@Html.Raw(Model.ProductDescription)</textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section FooterSection{
+
+    <script src="~/Content/Plugins/Fancybox/jquery.fancybox.min.js"></script>
+    <script src="~/Content/Plugins/Fancybox/FancyMethods.js"></script>
+    <script src="~/Content/Plugins/63bits-bsforms/forms.js"></script>
+    <script src="~/Content/Plugins/Tinymce/tinymce.min.js"></script>
+    <script src="~/Content/Plugins/Tinymce/jquery.tinymce.min.js"></script>
+    <script src="~/Content/Plugins/Tinymce/TinyMceHelper.js"></script>
+    <script src="~/Areas/Admin/Content/Scripts/Products/Product.js"></script>
+
+    @if (Model.Form.HasErrors)
+    {
+        <script>
+        $(function(){
+            Validation.Init({ErrorsJson:@Html.Raw(Model.Form.ErrorsJson)}).ShowErrors();
+        });
+        </script>
+    }
+
+}

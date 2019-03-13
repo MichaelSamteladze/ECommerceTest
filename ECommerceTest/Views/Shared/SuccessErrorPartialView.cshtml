@@ -1,0 +1,30 @@
+﻿@model SuccessErrorPartialViewModel
+
+@*@if (Model != null)
+{
+   
+    if (Model.IsSuccessErrorObjectGenerate)
+    {
+        
+        <div class="succes-error">
+            <span></span><a href="#"></a>
+        </div>
+    }
+    else
+    {
+        <div class="succes-error @(Model.ShowError ? "error opened" : (Model.ShowSuccess ? "opened" : "hidden")) @(Model.IsTop ? "" : "bottom")">
+            @Model.Message<a href="#"></a>
+        </div>
+    }    
+}*@
+
+
+@if (Model != null)
+{
+
+    <div class="succes-error @(Model.ShowError ? "error opened" : (Model.ShowSuccess ? "opened" : "hidden")) @(Model.IsTop ? "" : "bottom")">
+        <div>
+            <span>@Model.Message</span><button class="close-btn"></button>
+        </div>
+    </div>
+}

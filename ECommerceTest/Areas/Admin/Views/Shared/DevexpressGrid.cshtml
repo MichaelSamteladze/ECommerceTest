@@ -1,0 +1,12 @@
+﻿@model dynamic
+@{
+    var Grid = Html.DevExpress().GridView(settings =>
+    {
+        Model.InitGridSettings(Settings: settings, Html: Html, Url: Url);
+    });
+    if (Model.IsError)
+    {
+        Grid.SetEditErrorText(Model.ErrorMessage);        
+    }    
+}
+@Grid.Bind(Model.GridItems).GetHtml()

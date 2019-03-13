@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ECommerceTest" Class="DBCoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=srv63bits;Initial Catalog=ECommerceTest;Persist Security Info=True;User ID=sa" SettingsObjectName="Core.Properties.Settings" SettingsPropertyName="ECommerceTestConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.DictionariesIUD" Method="DictionariesIUD">
+    <Parameter Name="DatabaseAction" Parameter="databaseAction" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="DictionaryID" Parameter="dictionaryID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Caption" Parameter="caption" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CaptionEng" Parameter="captionEng" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CaptionRus" Parameter="captionRus" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StringCode" Parameter="stringCode" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IntCode" Parameter="intCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DecimalValue" Parameter="decimalValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DictionaryCode" Parameter="dictionaryCode" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IsDefault" Parameter="isDefault" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsVisible" Parameter="isVisible" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="SortIndex" Parameter="sortIndex" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PermissionsIUD" Method="PermissionsIUD">
+    <Parameter Name="DatabaseAction" Parameter="databaseAction" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="PermissionID" Parameter="permissionID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Caption" Parameter="caption" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PagePath" Parameter="pagePath" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="CodeName" Parameter="codeName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PermissionCode" Parameter="permissionCode" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IsMenuItem" Parameter="isMenuItem" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="MenuIcon" Parameter="menuIcon" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="SortIndex" Parameter="sortIndex" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DictionariesList" Method="DictionariesList" IsComposable="true">
+    <Parameter Name="Level" Parameter="level" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DictionaryCode" Parameter="dictionaryCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsVisible" Parameter="isVisible" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="DictionariesListResult">
+      <Column Name="DictionaryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CaptionEng" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CaptionRus" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StringCode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IntCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DecimalValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DictionaryCode" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsVisible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.PermissionsList" Method="PermissionsList" IsComposable="true">
+    <ElementType Name="PermissionsListResult">
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PagePath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CodeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PermissionCode" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsMenuItem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MenuIcon" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UsersIsEmailUnique" Method="UsersIsEmailUnique" IsComposable="true">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.UsersGetSingleUserByEmailAndPassword" Method="UsersGetSingleUserByEmailAndPassword" IsComposable="true">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.FaqSyncSortIndexes" Method="FaqSyncSortIndexes">
+    <Parameter Name="SortIndexesXml" Parameter="sortIndexesXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CarouselSyncSortIndexes" Method="CarouselSyncSortIndexes">
+    <Parameter Name="SortIndexesXml" Parameter="sortIndexesXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CarouselGetSingleItemByID" Method="CarouselGetSingleItemByID" IsComposable="true">
+    <Parameter Name="CarouselID" Parameter="carouselID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.FacebookGalleriesSyncSortIndexes" Method="FacebookGalleriesSyncSortIndexes">
+    <Parameter Name="SortIndexesXml" Parameter="sortIndexesXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FacebookGalleriesIUD" Method="FacebookGalleriesIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="GalleryID" Parameter="galleryID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="FacebookGalleryID" Parameter="facebookGalleryID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="GalleryCaption" Parameter="galleryCaption" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="GalleryCaptionEng" Parameter="galleryCaptionEng" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="GalleryCaptionRus" Parameter="galleryCaptionRus" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="GalleryDescription" Parameter="galleryDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GalleryDescriptionEng" Parameter="galleryDescriptionEng" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GalleryDescriptionRus" Parameter="galleryDescriptionRus" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FacebookGalleriesList" Method="FacebookGalleriesList" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="FacebookGalleriesListResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FacebookGalleryID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="GalleryCaption" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="GalleryCaptionEng" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GalleryCaptionRus" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GalleryDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GalleryDescriptionEng" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GalleryDescriptionRus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FacebookGalleriesIsGalleryIDUniq" Method="FacebookGalleriesIsGalleryIDUniq" IsComposable="true">
+    <Parameter Name="FacebookGalleryID" Parameter="facebookGalleryID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="GalleryID" Parameter="galleryID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.FacebookGalleryGetSingleByID" Method="FacebookGalleryGetSingleByID" IsComposable="true">
+    <Parameter Name="GalleryID" Parameter="galleryID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.CategoriesGetSingleByID" Method="CategoriesGetSingleByID" IsComposable="true">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.CategoriesGetSingleBySlug" Method="CategoriesGetSingleBySlug" IsComposable="true">
+    <Parameter Name="CategorySlug" Parameter="categorySlug" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.CategoriesIsSlugUniq" Method="CategoriesIsSlugUniq" IsComposable="true">
+    <Parameter Name="Slug" Parameter="slug" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.ProductsGetSingleBySlug" Method="ProductsGetSingleBySlug" IsComposable="true">
+    <Parameter Name="ProductSulg" Parameter="productSulg" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.ProductsIsSlugUniq" Method="ProductsIsSlugUniq" IsComposable="true">
+    <Parameter Name="Slug" Parameter="slug" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.ProductsGetSingleByID" Method="ProductsGetSingleByID" IsComposable="true">
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.UsersGetSingleUserByUserID" Method="UsersGetSingleUserByUserID" IsComposable="true">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.OrderDetailsIUD" Method="OrderDetailsIUD">
+    <Parameter Name="DatabaseAction" Parameter="databaseAction" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="OrderDetailID" Parameter="orderDetailID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductCount" Parameter="productCount" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.OrdersGetSingleByID" Method="OrdersGetSingleByID" IsComposable="true">
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.UsersGetSingleByEmail" Method="UsersGetSingleByEmail" IsComposable="true">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetAccountActivationEmailBodyText" Method="NotificationManager_GetAccountActivationEmailBodyText" IsComposable="true">
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ApplicationAddress" Parameter="applicationAddress" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetAccountDeactivationEmailBodyText" Method="NotificationManager_GetAccountDeactivationEmailBodyText" IsComposable="true">
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetPasswordRecoveryEmailBodyText" Method="NotificationManager_GetPasswordRecoveryEmailBodyText" IsComposable="true">
+    <Parameter Name="ConfirmationCode" Parameter="confirmationCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetContactFormEmailBodyText" Method="NotificationManager_GetContactFormEmailBodyText" IsComposable="true">
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="CountryID" Parameter="countryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StateID" Parameter="stateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IsProfessional" Parameter="isProfessional" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TopicID" Parameter="topicID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.CategoriesSyncParentsAndSortIndexes" Method="CategoriesSyncParentsAndSortIndexes">
+    <Parameter Name="ParentsAndSortIndexesXml" Parameter="parentsAndSortIndexesXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetConfirmationCodeEmailBodyText" Method="NotificationManager_GetConfirmationCodeEmailBodyText" IsComposable="true">
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ConfirmationCode" Parameter="confirmationCode" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.OrdersGetSingleOrderWithStatusBasketByCustomerID" Method="OrdersGetSingleOrderWithStatusBasketByCustomerID" IsComposable="true">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.PaypalTransactionsIUD" Method="PaypalTransactionsIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="TransactionID" Parameter="transactionID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TransactionTypeID" Parameter="transactionTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TransactionTypeCode" Parameter="transactionTypeCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RequestUrl" Parameter="requestUrl" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="RequestParameters" Parameter="requestParameters" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ResponseString" Parameter="responseString" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ADNTransactionsIUD" Method="ADNTransactionsIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="RecordID" Parameter="recordID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ADNTransactionID" Parameter="aDNTransactionID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="RequestStr" Parameter="requestStr" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ResponseStr" Parameter="responseStr" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetSaleNotificationEmailBodyText" Method="NotificationManager_GetSaleNotificationEmailBodyText" IsComposable="true">
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.DictionaryGetDictionaryIDByDictionaryCodeAndIntCode" Method="DictionaryGetDictionaryIDByDictionaryCodeAndIntCode" IsComposable="true">
+    <Parameter Name="DictionaryCode" Parameter="dictionaryCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IntCode" Parameter="intCode" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DictionariesGetStringCodes" Method="DictionariesGetStringCodes" IsComposable="true">
+    <Parameter Name="ShippingCountryID" Parameter="shippingCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ShippingRegion" Parameter="shippingRegion" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.DictionaryGetDictionarySettingsStrigCodeByIntCode" Method="DictionaryGetDictionarySettingsStrigCodeByIntCode" IsComposable="true">
+    <Parameter Name="IntCode" Parameter="intCode" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.NotificationManager_GetPaymentSuccessEmailBodyText" Method="NotificationManager_GetPaymentSuccessEmailBodyText" IsComposable="true">
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.OrderDetailsSyncProductCount" Method="OrderDetailsSyncProductCount">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductCountXml" Parameter="productCountXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PermissionsDeleteRecursive" Method="PermissionsDeleteRecursive">
+    <Parameter Name="PermissionID" Parameter="permissionID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FaqIUD" Method="FaqIUD">
+    <Parameter Name="DatabaseAction" Parameter="databaseAction" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="FaqID" Parameter="faqID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Question" Parameter="question" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Answer" Parameter="answer" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SortIndex" Parameter="sortIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FaqList" Method="FaqList" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="FaqListResult">
+      <Column Name="FaqID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Question" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Answer" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CategoriesIUD" Method="CategoriesIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="CategoryTheme" Parameter="categoryTheme" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoryCaption" Parameter="categoryCaption" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CategoryDescription" Parameter="categoryDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="CategoryImageFilename" Parameter="categoryImageFilename" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CategorySlug" Parameter="categorySlug" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CarouselIUD" Method="CarouselIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="CarouselID" Parameter="carouselID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="CarouselCaption" Parameter="carouselCaption" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CarouselText" Parameter="carouselText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="CarouselUrl" Parameter="carouselUrl" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CarouselImageFilename" Parameter="carouselImageFilename" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CarouselList" Method="CarouselList" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="CarouselListResult">
+      <Column Name="CarouselID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CarouselCaption" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CarouselText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CarouselUrl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CarouselImageFilename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CategoriesList" Method="CategoriesList" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="CategoriesListResult">
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryTheme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryCaption" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CategorySlug" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CategoryImageFilename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProductsList" Method="ProductsList" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CategorySlug" Parameter="categorySlug" Type="System.String" DbType="NVarChar(200)" />
+    <ElementType Name="ProductsListResult">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryCaption" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryTheme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductSlug" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCaption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductOldPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductImageFilename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProductsIUD" Method="ProductsIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ProductSlug" Parameter="productSlug" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductCaption" Parameter="productCaption" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="ProductPrice" Parameter="productPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ProductOldPrice" Parameter="productOldPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ProductDescription" Parameter="productDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ProductImageFilename" Parameter="productImageFilename" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UsersDelete" Method="UsersDelete">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UsersIUD" Method="UsersIUD">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Lastname" Parameter="lastname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Birthdate" Parameter="birthdate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Mobile" Parameter="mobile" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Avatar" Parameter="avatar" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IsActive" Parameter="isActive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UsersList" Method="UsersList" IsComposable="true">
+    <ElementType Name="UsersListResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Firstname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Lastname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Fullname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Birthdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Avatar" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.OrderDetailsList" Method="OrderDetailsList" IsComposable="true">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="OrderDetailsListResult">
+      <Column Name="OrderDetailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDetailProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCaption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="OrderDetailProductCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDetailProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderDetailProductPricePaid" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderDetailProductPricePaidTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductSlug" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductImageFilename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.OrderDetailsInsert" Method="OrderDetailsInsert">
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductCount" Parameter="productCount" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ProductPrice" Parameter="productPrice" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ProductsListFiltered" Method="ProductsListFiltered" IsComposable="true">
+    <Parameter Name="CategorySlug" Parameter="categorySlug" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="PageNumber" Parameter="pageNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemsPerPage" Parameter="itemsPerPage" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProductsListFilteredResult">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryCaption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryTheme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductSlug" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProductCaption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductOldPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductImageFilename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.OrdersUpdate" Method="OrdersUpdate">
+    <Parameter Name="OrderID" Parameter="orderID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="OrderStatusID" Parameter="orderStatusID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ShippingFirstname" Parameter="shippingFirstname" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ShippingLastname" Parameter="shippingLastname" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ShippingAddress1" Parameter="shippingAddress1" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ShippingAddress2" Parameter="shippingAddress2" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ShippingCity" Parameter="shippingCity" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ShippingRegion" Parameter="shippingRegion" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ShippingCountryID" Parameter="shippingCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ShippingZip" Parameter="shippingZip" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="IsBillingSameAsShipping" Parameter="isBillingSameAsShipping" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BillingFirstname" Parameter="billingFirstname" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BillingLastname" Parameter="billingLastname" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BillingAddress1" Parameter="billingAddress1" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BillingAddress2" Parameter="billingAddress2" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="BillingCity" Parameter="billingCity" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="BillingRegion" Parameter="billingRegion" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="BillingCountryID" Parameter="billingCountryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingZip" Parameter="billingZip" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OrderPaymentDateTime" Parameter="orderPaymentDateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsOrderDelivered" Parameter="isOrderDelivered" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="PaymentOptionID" Parameter="paymentOptionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TransactionID" Parameter="transactionID" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.OrdersList" Method="OrdersList" IsComposable="true">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderStatusIntCode" Parameter="orderStatusIntCode" Type="System.Int32" DbType="Int" />
+    <ElementType Name="OrdersListResult">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fullname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ShippingFirstname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ShippingLastname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ShippingAddress1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ShippingAddress2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ShippingCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ShippingRegion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ShippingCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShippingZip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BillingFirstname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BillingLastname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BillingAddress1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BillingAddress2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BillingCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BillingRegion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BillingCountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingZip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderPricePaid" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ShippingPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderTotalPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderPaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsOrderDelivered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentOptionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

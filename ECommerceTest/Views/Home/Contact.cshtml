@@ -1,0 +1,191 @@
+﻿@model ContactModel.PageViewModel
+
+@section HeaderSection{
+    <link href="~/Content/Plugins/63bits-bsforms/forms.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/Preloader/preloader.css" rel="stylesheet" />
+}
+
+<main class="page contact">
+    <div class="container">
+        <h1 class="title lg page-title">Contact</h1>
+        <div class="row">
+            <div class="col info-col">
+                <div class="info">
+                    @*<div class="text">
+                            @Html.Raw(Model.CurrentPage.PageText)
+                        </div>*@
+
+                    <ul>
+                        <li>
+                            <i class="icon"><img src="~/Content/images/icons/phone_gr.svg" alt="phone logo"></i>
+                            <a href="tel:@Model.CompanyPhoneNumber">@Model.CompanyPhoneNumber</a>
+                        </li>
+                        <li>
+                            <i class="icon"><img src="~/Content/images/icons/mail_gr.svg" alt="mail logo"></i>
+                            <a href="mailto:@Model.CompanyEmail">@Model.CompanyEmail</a>
+                        </li>
+                        @*<li>
+                                <i class="icon"><img src="~/Content/images/icons/pin_gr.svg" alt=""></i>
+                                <span>24 Abashidze Str.</span>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>First Name: *</label>
+                                    <input class="form-control" type="text" value="@Model.FirstName" name="@nameof(Model.FirstName)">
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Last Name: *</label>
+                                    <input class="form-control" type="text" value="@Model.LastName" name="@nameof(Model.LastName)">
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email: *</label>
+                                    <input class="form-control" type="text" value="@Model.Email" name="@nameof(Model.Email)">
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Phone Number: *</label>
+                                    <input class="form-control" type="text" value="@Model.Phone" name="@nameof(Model.Phone)">
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Country: *</label>
+                                    <select id="CountryCombo" class="form-control" name="@nameof(Model.SelectedCountryID)">
+                                        <option></option>
+                                        @foreach (var Item in Model.Countries)
+                                        {
+                                            <option value="@Item.Key" @(Item.IsSelected ? Html.Raw("selected") : null)>@Item.Value</option>
+                                        }
+                                    </select>
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" id="StatesCombo">
+                                <div class="form-group">
+                                    <label>State: *</label>
+                                    <select class="form-control" name="@nameof(Model.SelectedStateID)">
+                                        <option></option>
+                                        @foreach (var Item in Model.UsStates)
+                                        {
+                                            <option class="UsState" value="@Item.Key" @(Item.IsSelected ? Html.Raw("selected") : null)>@Item.Value</option>
+                                        }
+                                        @foreach (var Item in Model.CanadianProvinces)
+                                        {
+                                            <option class="CanadianProvinces" value="@Item.Key" @(Item.IsSelected ? Html.Raw("selected") : null)>@Item.Value</option>
+                                        }
+                                    </select>
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>City: *</label>
+                                    <input class="form-control" type="text" value="@Model.City" name="@nameof(Model.City)">
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Licensed Hair Care Professional? * </label>
+                                    <select class="form-control" name="@nameof(Model.IsLicensedProfessional)">
+                                        <option></option>
+                                        <option value="true" @(Model.IsLicensedProfessional == true ? Html.Raw("selected") : null)>Yes</option>
+                                        <option value="false" @(Model.IsLicensedProfessional == false ? Html.Raw("selected") : null)>No</option>
+                                    </select>
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Topic: *</label>
+                                    <select class="form-control" name="@nameof(Model.SelectedTopicID)">
+                                        <option></option>
+                                        @foreach (var Item in Model.Topics)
+                                        {
+                                            <option value="@Item.Key" @(Item.IsSelected ? Html.Raw("selected") : null)>@Item.Value</option>
+                                        }
+                                    </select>
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Message: *</label>
+                                    <textarea class="form-control" rows="6" name="@nameof(Model.Body)">@Model.Body</textarea>
+                                    <p class="help-block">
+                                        <span class="error-text"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="ContactFormSubmit" class="btn primary-btn submit-btn">Submit</button>
+                        <p id="ContactFormSuccessMsg" class="hidden"><i class="fa fa-check" style="color: #35B797;"></i> Mail has been sent successfully</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section FooterSection{
+<script>
+    ContactModel.USCountryID = @Model.USCountryID;
+    ContactModel.CanadaCountryID = @Model.CanadaCountryID;        
+</script>
+    <script src="~/Content/Plugins/Preloader/preloader.js"></script>
+    <script src="~/Content/Plugins/63bits-bsforms/forms.js"></script>
+    <script src="~/Content/js/Home/Contact.js"></script>    
+    @if (Model.Form.HasErrors)
+    {
+        <script>
+            $(function(){
+                Validation.Init({ErrorsJson:@Html.Raw(Model.Form.ErrorsJson)}).ShowErrors();
+            });
+        </script>
+    }
+
+    @if (Model.IsMailSent)
+    {
+        <script>
+            $(function () {
+                $('#ContactFormSubmit').hide();
+                $('#ContactFormSuccessMsg').show();
+                $('form').find("input[type=text], textarea, select").val("");
+            })
+        </script>
+    }
+}

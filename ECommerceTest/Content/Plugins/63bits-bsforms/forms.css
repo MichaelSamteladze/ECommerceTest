@@ -1,0 +1,197 @@
+﻿.form-group label,
+.form-group .badge
+{
+    font-family:'BPG DejaVu Sans MT', 'Roboto', sans-serif;
+    text-transform:uppercase;
+}
+.form-group .badge{
+    padding-top:7px;
+}
+
+/* ----------- form elements ----------- */
+select.form-control:not([size]):not([multiple]){
+    height: 35px;
+}
+
+textarea.form-control{
+    resize:vertical;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/* ----------- /form elements ----------- */
+
+
+/*---------- Custom File Upload ---------- */
+.custom-file-group{
+    height:35px;
+}
+.custom-file-group .form-control{
+    display:flex;
+    border-right:0;
+    overflow:hidden;
+}
+.custom-file-group .form-control > *{
+    display: block;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.custom-file-group .input-group-btn{
+    display:flex;
+    align-items:stretch;
+}
+.custom-file-group .input-group-btn .btn{
+    width:40px;
+    border:0;
+    border-radius:0;
+    outline:none !important;
+    box-shadow:none !important;
+    padding:0;
+}
+.custom-file-group .input-group-btn .btn:last-child{
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+.custom-file-group .input-group-btn a.btn,
+.custom-file-group .input-group-btn span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.custom-file-group i{
+    display:block;
+}
+
+.custom-file-upload{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+.custom-file-upload input{
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+    font-size:100px;
+    opacity:0;
+    cursor:pointer;
+}
+/*---------- /Custom File Upload ---------- */
+
+
+/* ----------- has-error ----------- */
+.has-error input,
+.has-error select, 
+.has-error .select2 span,
+.has-error > table{
+    border-color: #F50505 !important;
+}
+/*.has-error label,*/
+.has-error .help-block {
+    color: #F50505;
+}
+.help-block{
+    display:none;
+    margin-bottom:0px;
+    font-size:12px;
+}
+.has-error .help-block{
+    display:block;
+}
+/* ----------- has-error ----------- */
+
+
+/* ----------- toggler ----------- */
+.toggler{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+	overflow: hidden;
+}
+.toggler > span{
+	color: #747474;
+    font-family:'BPG DejaVu Sans MT', 'Roboto', sans-serif;
+	font-size: 11px;
+    font-weight:bold;
+    text-transform:uppercase;
+    padding-top:2px;
+}
+.toggler > span:first-child{
+    margin-right:7px;
+}
+.toggler > span:last-child{
+    margin-left:7px;
+}
+.toggler i{
+	display: block;
+	width: 34px;
+    height: 21px;
+	background-color: #c0c0c0;
+	border-radius: 10px;
+	padding: 1px;
+	cursor: pointer;
+	
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.toggler i::before{
+	content: "";
+	display: block;
+	width: 19px;
+	height: 19px;
+	background-color: #fff;
+	border-radius: 50%;
+}
+.toggler i,
+.toggler i::before{
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.toggler input{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+.toggler input:checked + i{
+	background-color: #5983fe;
+}
+.toggler input:checked + i::before{	
+	-webkit-transform: translateX(13px);
+	transform: translateX(13px);
+}
+
+.toggler-lg,
+.form-group .toggler{
+    height:35px;
+}
+.toggler-lg i{
+    -webkit-transform: scale(1.3) translateX(4px);
+    transform: scale(1.3) translateX(4px);
+}
+.toggler-lg > span:first-child{
+    margin-right:18px;
+}
+.toggler-lg > span:last-child{
+    margin-left:18px;
+}
+/* ----------- /toggler ----------- */

@@ -1,0 +1,14 @@
+﻿@model List<TreeNode>
+<div class="list-block">
+    @foreach (var Item in Model)
+    {
+        if (Item.IsFolder)
+        {
+            @Html.Partial(ViewNames.Shared.FileTree.Folder, Item)
+        }
+        else
+        {
+            @Html.Partial(ViewNames.Shared.FileTree.File, Item)
+        }
+    }
+</div>

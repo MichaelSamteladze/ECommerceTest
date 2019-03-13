@@ -1,0 +1,29 @@
+﻿@model FaqModel.PageViewModel
+
+<main class="page">
+    <div class="container">
+        <h1 class="title lg page-title">FAQ</h1>
+
+        <div class="faq-list">
+            @if (Model.HasFaq)
+            {
+                foreach (var Item in Model.Faq)
+                {
+                    <section class="item">
+                        <h2 class="title js-toggle">@Html.Raw(Item.Question)</h2>
+
+                        <div class="content collapse">
+                            <div class="text">
+                                @Html.Raw(Item.Answer)
+                            </div>
+                        </div>
+                    </section>
+                }
+            }
+        </div>
+    </div>
+</main>
+
+@section FooterSection{
+    <script src="~/Content/js/Home/FAQ.js"></script>
+}

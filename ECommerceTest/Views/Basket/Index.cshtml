@@ -1,0 +1,97 @@
+﻿@model BasketModel.PageViewModel
+<main class="page cart">
+    <div class="container">
+        <h1 class="title">@Html.Raw(Model.PageTitle)</h1>
+        <div class="cart-grid">
+            <div class="head">
+                <div class="row">
+                    <div class="col">
+                        <span>Product</span>
+                    </div>
+                    <div class="col">
+                        <span>Quantity</span>
+                    </div>
+                    <div class="col">
+                        <span>Price</span>
+                    </div>
+                    <div class="col">
+                        <span>Total</span>
+                    </div>
+                    <div class="col"><span></span></div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="row">
+                    @if (Model.HasBasketItems)
+                    {
+                        foreach (var Item in Model.BasketItems)
+                        {
+                            <div class="col-6 col-sm-4 col-md-12">
+                                <div class="item" data-product-id="@Item.ProductID" data-product-option-id="@Item.ProductOptionID" data-id="@Item.ItemID" data-item-price="@Item.ProductPrice" data-item-total-price="@Item.ProductPriceSum">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <div class="product-item">
+                                                <a class="img-wrap" href="@Item.ProductDetailsUrl">
+                                                    <span class="img" style="background-image: url(@(Item.HasImage?Item.ImagePath:Model.NoImagePath)?w=600)"></span>
+                                                </a>
+                                                <div>
+                                                    <a href="@Item.ProductDetailsUrl">
+                                                        <h2 class="product-name">@Item.ProductCaption</h2>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="product-count">
+                                                <input class="js-product-count" name="@nameof(Item.ProductCount)" type="text" maxlength="3" value="@Item.ProductCount">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <span class="product-price lg">
+                                                <b class="current color-gray">@Item.ProductPrice</b>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <span class="product-price lg">
+                                                <b class="current-total"><span>@Item.ProductPriceSum</span></b>
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <a class="js-remove-item" href="#"><i class="icon"><img src="~/Content/images/icons/close.svg" alt="X"></i><span>Remove</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row total-price justify-content-end">
+            <div class="col">
+                Total
+            </div>
+            <div class="col">
+                <span class="product-price lg">
+                    <b class="current-total"><span class="js-total-price">@Model.PriceTotal</span></b>
+                </span>
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn primary-btn js-checkout-button">Proceed to checkout</button>
+        </div>
+    </div>
+</main>
+@section Footersection{
+    <script src="~/Content/js/Basket/Basket.js"></script>
+    <script>
+    $(function () {
+        BasketModel.OrderDetailDeleteUrl = '@Model.OrderDetailDeleteUrl';
+        BasketModel.OrderDetailsUpdateUrl = '@Model.OrderDetailsUpdateUrl';
+        BasketModel.PaymentInfoUrl = '@Model.PaymentInfoUrl';
+    });
+    </script>
+}

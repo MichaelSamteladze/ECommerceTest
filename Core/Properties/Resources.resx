@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextError" xml:space="preserve">
+    <value>Sorry something went wrong</value>
+  </data>
+  <data name="TextSuccess" xml:space="preserve">
+    <value>Data has been saved successfully</value>
+  </data>
+  <data name="ValidationEmailNotUnique" xml:space="preserve">
+    <value>This email is already taken</value>
+  </data>
+  <data name="ValidationEmailNotValid" xml:space="preserve">
+    <value>Email address is invalid</value>
+  </data>
+  <data name="ValidationOldPasswordNotMatch" xml:space="preserve">
+    <value>Invalid old password</value>
+  </data>
+  <data name="ValidationPasswordLength" xml:space="preserve">
+    <value>Password must be at least 8 character long</value>
+  </data>
+  <data name="ValidationPasswordsNotMatch" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="ValidationPasswordStrength" xml:space="preserve">
+    <value>Password must contain at least one letter and one number</value>
+  </data>
+  <data name="ValidationRequiredField" xml:space="preserve">
+    <value>Field is required</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="TextConfirmDelete" xml:space="preserve">
+    <value>Do you really want to delete this record?</value>
+  </data>
+  <data name="ValidationUserInvalidUsernameOrPassword" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
+  <data name="TextConfirmDeleteAttachment" xml:space="preserve">
+    <value>Do you really want to delete this file?</value>
+  </data>
+  <data name="TextConfirmDeleteRecursive" xml:space="preserve">
+    <value>Deleting this record will delete all subrecords. Do you want to continue?</value>
+  </data>
+  <data name="ValidationRequiredPageTitle" xml:space="preserve">
+    <value>Please enter page title</value>
+  </data>
+  <data name="TextSlugNotUniq" xml:space="preserve">
+    <value>Slug is not unique</value>
+  </data>
+  <data name="TextFacebookGalleryIDNotUniq" xml:space="preserve">
+    <value>Gallery ID is not unique</value>
+  </data>
+  <data name="ValidationRequiredCategoryCaption" xml:space="preserve">
+    <value>Please enter category caption</value>
+  </data>
+  <data name="ValidateRecoveryCodeNotValid" xml:space="preserve">
+    <value>Invalid recovery code</value>
+  </data>
+  <data name="TextAccountActivation" xml:space="preserve">
+    <value>Account activation</value>
+  </data>
+  <data name="TextAccountDeactivation" xml:space="preserve">
+    <value>Account deactivation</value>
+  </data>
+  <data name="TextPasswordRecovery" xml:space="preserve">
+    <value>Password recovery</value>
+  </data>
+  <data name="TextContactFormEmail" xml:space="preserve">
+    <value>Website contact form email</value>
+  </data>
+  <data name="TextConfirmationCode" xml:space="preserve">
+    <value>Confirmation code</value>
+  </data>
+  <data name="ValidateConfirmationCodeNotValid" xml:space="preserve">
+    <value>Confirmation code is invalid</value>
+  </data>
+  <data name="ValidateEmailNotRegistered" xml:space="preserve">
+    <value>Email address is not found in our system</value>
+  </data>
+  <data name="RegexCreditCardAmex" xml:space="preserve">
+    <value>^3[47][0-9]{13}$</value>
+  </data>
+  <data name="RegexCreditCardDinersClub" xml:space="preserve">
+    <value>^3(?:0[0-5]|[68][0-9])[0-9]{11}$</value>
+  </data>
+  <data name="RegexCreditCardDiscover" xml:space="preserve">
+    <value>^6(?:011|5[0-9]{2})[0-9]{12}$</value>
+  </data>
+  <data name="RegexCreditCardJCB" xml:space="preserve">
+    <value>^(?:2131|1800|35\d{3})\d{11}$</value>
+  </data>
+  <data name="RegexCreditCardMasterCard" xml:space="preserve">
+    <value>^5[1-5][0-9]{14}$</value>
+  </data>
+  <data name="RegexCreditCardVisa" xml:space="preserve">
+    <value>^4[0-9]{12}(?:[0-9]{3})?$</value>
+  </data>
+  <data name="TextSaleNotification" xml:space="preserve">
+    <value>Sale Notification</value>
+  </data>
+  <data name="TextPaymentSuccess" xml:space="preserve">
+    <value>Payment Success</value>
+  </data>
+  <data name="TextPaymentFailed" xml:space="preserve">
+    <value>Payment failed</value>
+  </data>
+  <data name="TextBasketEmpty" xml:space="preserve">
+    <value>Basket is empty</value>
+  </data>
+  <data name="TextBasketAddSuccess" xml:space="preserve">
+    <value>Product has been added to basket successfully </value>
+  </data>
+  <data name="ValidationInvalidZIPSndStateCombination" xml:space="preserve">
+    <value>Invalid ZIP and state combination</value>
+  </data>
+  <data name="TextPleaseFillAllFields" xml:space="preserve">
+    <value>Please fill all fields</value>
+  </data>
+  <data name="TextAboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="TextContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="TextFAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="TextProducts" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="TextSignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="TextBasket" xml:space="preserve">
+    <value>Basket</value>
+  </data>
+  <data name="TextCheckout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="TextSignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="TextResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="TextChangePassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="TextOrders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="TextProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="TextAdministration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="TextSignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+</root>
